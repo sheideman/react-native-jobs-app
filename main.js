@@ -1,8 +1,11 @@
-import Expo from 'expo';
+import Expo, {AppLoading} from 'expo';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View , StyleSheet} from 'react-native';
 import {TabNavigator, StackNavigator} from 'react-navigation';
+import {Provider} from 'react-redux';
 
+
+import store from './store';
 import AuthScreen from './screens/AuthScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 import MapScreen from './screens/MapScreen';
@@ -28,22 +31,18 @@ class App extends React.Component {
           }
         })
       }
-    })
+    },{
+      navigationOptions:{
+        tabBar: {visible: false}
+      },
+      lazyLoad: true
+    });
     return (
-      <View style={styles.container}>
-        <MainNavigator></MainNavigator>
-      </View>
+      <Provider store={store}>
+        <MainNavigator/>
+      </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 Expo.registerRootComponent(App);
