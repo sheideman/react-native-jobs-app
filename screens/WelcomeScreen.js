@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { View, Text, AsyncStorage } from 'react-native';
-import {AppLoading} from 'expo';
+
 
 import Slides from '../components/Slides';
 
@@ -28,9 +28,7 @@ class WelcomeScreen extends Component {
         this.props.navigation.navigate('auth');
     }
     render() {
-        if(_.isNull(this.state.token)){
-            return <AppLoading/>;
-        }
+
         return (
             <Slides data={SLIDE_DATA} onComplete={this.onSlidesComplete} />
         );
