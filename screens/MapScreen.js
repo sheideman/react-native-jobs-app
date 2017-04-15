@@ -8,7 +8,14 @@ import * as actions from '../actions';
 
 // create a component
 class MapScreen extends Component {
-
+    static navigationOptions = {
+        title: 'Map',
+        tabBar: {
+            icon: ({tintColor})=>{
+                return <Icon name="my-location" size={30} color={tintColor} />
+            }
+        }
+    }
     state = {
         mapLoaded:false,
         region: {
@@ -25,7 +32,9 @@ class MapScreen extends Component {
      this.setState({region});
     }
     onButtonPress = ()=>{
-        this.props.fetchJobs(this.state.region);
+        this.props.fetchJobs(this.state.region, ()=>{
+            this.props.navigation.navigate('deck');
+        });
     }
     render() {
         
