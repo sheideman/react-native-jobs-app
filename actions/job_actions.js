@@ -17,7 +17,9 @@ const QUERY_PARAMS = {
 
 const buildUrl = (zip)=>{
     const query = qs.stringify({...QUERY_PARAMS, l: zip})
+    console.log(`${ROOT_URL}${query}`)
     return `${ROOT_URL}${query}`;
+    
      
 }
 export const fetchJobs = (region) => async dispatch => {
