@@ -1,12 +1,19 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text} from 'react-native';
+import { View, Text, Platform} from 'react-native';
 import {connect} from 'react-redux';
 import {Button} from 'react-native-elements';
 import * as actions from '../actions'
 
 // create a component
 class SettingsScreen extends Component {
+    static navigationOptions = {
+        header:{
+            style: {
+                marginTop: Platform.OS === 'android' ? 24 : 0
+            }
+        }
+    }
     render() {
         return (
             <View>
